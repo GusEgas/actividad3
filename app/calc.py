@@ -41,3 +41,21 @@ if __name__ == "__main__":  # pragma: no cover
     calc = Calculator()
     result = calc.add(2, 2)
     print(result)
+
+#se agrega el siguiente codigo
+
+    def sqrt(self, x):
+        self.check_type(x)
+        if x < 0:
+            raise TypeError("No se puede realizar la raiz cuadrada de un numero negativo")
+        return sqrt(x)
+
+    def log10(self, x):
+        self.check_type(x)
+        if x <= 0:
+            raise TypeError("El logaritmo para numeros no positivo no esta definido")
+        return log10(x)
+
+    def check_type(self, x):
+        if not isinstance(x, (int, float)):
+            raise TypeError("El parametro debe ser un numero")

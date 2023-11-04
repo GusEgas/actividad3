@@ -54,3 +54,24 @@ class TestCalculate(unittest.TestCase):
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
+#Se agregan las siguientes pruebas unitarias
+
+    def test_power_method_returns_correct_result(self):
+        self.assertEqual(4, self.calc.power(2, 2))
+        self.assertEqual(1, self.calc.power(2, 0))
+        self.assertEqual(0, self.calc.power(0, 2))
+
+    def test_sqrt_method_returns_correct_result(self):
+        self.assertEqual(2, self.calc.sqrt(4))
+        self.assertAlmostEqual(1.41421356, self.calc.sqrt(2), places=8)
+
+    def test_sqrt_method_fails_with_negative_parameter(self):
+        self.assertRaises(TypeError, self.calc.sqrt, -2)
+
+    def test_log10_method_returns_correct_result(self):
+        self.assertAlmostEqual(1, self.calc.log10(10), places=8)
+        self.assertAlmostEqual(2, self.calc.log10(100), places=8)
+
+    def test_log10_method_fails_with_non_positive_parameter(self):
+        self.assertRaises(TypeError, self.calc.log10, 0)
+        self.assertRaises(TypeError, self.calc.log10, -10)

@@ -21,3 +21,33 @@ class TestApi(unittest.TestCase):
         self.assertEqual(
             response.status, http.client.OK, f"Error en la petición API a {url}"
         )
+
+#Se agregan las siguientes pruebas de api
+
+    def test_api_multiply(self):
+        url = f"{BASE_URL}/calc/multiply/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+
+    def test_api_power(self):
+        url = f"{BASE_URL}/calc/power/2/2"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+
+    def test_api_sqrt(self):
+        url = f"{BASE_URL}/calc/sqrt/4"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
+
+    def test_api_log10(self):
+        url = f"{BASE_URL}/calc/log10/100"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en la petición API a {url}"
+        )
