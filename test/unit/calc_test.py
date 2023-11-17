@@ -75,3 +75,18 @@ if __name__ == "__main__":  # pragma: no cover
     def test_log10_method_fails_with_non_positive_parameter(self):
         self.assertRaises(TypeError, self.calc.log10, 0)
         self.assertRaises(TypeError, self.calc.log10, -10)
+        #prueba de casos de error
+        
+    def test_divide_by_zero():
+        with pytest.raises(ZeroDivisionError):
+            Calculator.divide(5, 0)
+
+    def test_sqrt_negative_number():
+        with pytest.raises(ValueError):
+            Calculator.sqrt(-5)
+
+    def test_log10_zero_or_negative():
+        with pytest.raises(ValueError):
+            Calculator.log10(0)
+        with pytest.raises(ValueError):
+            Calculator.log10(-5)
