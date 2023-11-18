@@ -8,27 +8,30 @@ pipeline {
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    // Asumiendo que utilizas un entorno virtual para Python
-                    sh 'python -m venv venv'
-                    sh '. venv/bin/activate'
-                    sh 'pip install -r requirements.txt'
-                    sh 'pytest test/unit/'
+                    // Asumiendo que tienes un Dockerfile en la raíz del repositorio
+                    sh 'docker build -t calculator-app .'
                 }
             }
         }
 
-        stage('Run API Tests') {
+        stage('Run Unit Tests') {
             steps {
                 script {
-                    // Ejecuta aquí tus pruebas de API
-                    sh 'pytest test/rest/'
+                    // Ejecutar pruebas unitarias con Docker
+                    sh 'docker run --rm --volume `pwd`:/opt/calc --env PYTHONPATH=/opt/calc -w /opt/calc calculator-app:latest pytest --cov --cov-report=xml:results/coverage.xml --cov-report=html:results/coverage --junit-xml=results/unit_result.xml -m unit || true'
                 }
             }
         }
 
         // Puedes añadir más etapas según sea necesario
+    }
+
+    post {
+        always {
+            // Pasos para realizar después de ejecutar las pruebas, como limpieza o envío de notificaciones
+        }
     }
 }
