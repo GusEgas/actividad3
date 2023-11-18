@@ -32,6 +32,7 @@ pipeline {
     post {
         always {
             // Pasos para realizar después de ejecutar las pruebas, como limpieza o envío de notificaciones
+            echo "El trabajo de Jenkins ha finalizado"
         }
     }
 }
