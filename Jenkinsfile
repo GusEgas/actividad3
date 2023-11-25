@@ -40,6 +40,7 @@ pipeline {
 
     post {
         always {
+            archiveArtifacts artifacts: 'results/*.xml'
             echo "El trabajo de Jenkins ha finalizado"
         }
     }
